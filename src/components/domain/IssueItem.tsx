@@ -27,7 +27,18 @@ const IssueItem = ({ issue, idx }: IssueListProps) => {
         </div>
         <Comment>{comments}개</Comment>
       </StyledIssueItem>
-      {isFifthIdx && <Add to="https://www.wanted.co.kr/">광고</Add>}
+      {isFifthIdx && (
+        <Add
+          to="https://www.wanted.co.kr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
+            alt=""
+          />
+        </Add>
+      )}
     </>
   );
 };
@@ -54,8 +65,13 @@ const StyledIssueItem = styled.li`
 
 const Add = styled(Link)`
   width: 100%;
-  height: 100px;
+  height: 200px;
   background-color: #e1e4e8;
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 
 const Comment = styled.span`
