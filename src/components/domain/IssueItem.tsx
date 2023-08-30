@@ -13,19 +13,17 @@ const IssueItem = ({ issue }: IssueListProps) => {
   };
 
   return (
-    <>
-      <li>
-        <StyledIssueItem onClick={navigateToIssueDetail}>
-          <div>
-            <p>{title}</p>
-            <span>#{number}</span>
-            <span>{formatDateString(createdAt)}</span>
-            <span>{author}</span>
-          </div>
-          <Comment>{comments}개</Comment>
-        </StyledIssueItem>
-      </li>
-    </>
+    <li>
+      <StyledIssueItem onClick={navigateToIssueDetail}>
+        <div>
+          <p>{title}</p>
+          <span>#{number}</span>
+          <span>{formatDateString(createdAt)}</span>
+          <span>{author}</span>
+        </div>
+        <Comment>{comments}개</Comment>
+      </StyledIssueItem>
+    </li>
   );
 };
 
