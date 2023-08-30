@@ -1,7 +1,7 @@
 import { getIssues } from "api/octokitService";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IssueItem } from "components";
-import { Issue } from "../../api/type";
+import { Issue } from "api/type";
 
 const IssueList = () => {
   const [issues, setIssues] = useState<Issue[]>([]);

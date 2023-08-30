@@ -6,3 +6,13 @@ export type Issue = {
   createdAt: string;
   author: string | undefined;
 };
+
+export type IssueDetail = {
+  authorAvatar: string | undefined;
+  authorName: string | undefined;
+  body: string | undefined | null;
+  comments: number;
+  createdAt: string;
+  number: number;
+  title: string;
+};
