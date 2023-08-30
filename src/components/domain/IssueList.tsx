@@ -53,7 +53,7 @@ const IssueList = () => {
               >
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
-                  alt=""
+                  alt="광고 이미지"
                 />
               </Add>
             </li>
