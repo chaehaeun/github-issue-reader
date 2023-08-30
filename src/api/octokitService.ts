@@ -7,7 +7,9 @@ const octokit = new Octokit({
 
 export const getIssues = async (
   owner = "facebook",
-  repo = "react"
+  repo = "react",
+  perPage = 20,
+  page = 1
 ): Promise<Issue[]> => {
   try {
     const response = await octokit.rest.issues.listForRepo({
@@ -15,6 +17,8 @@ export const getIssues = async (
       repo,
       state: "open",
       sort: "comments",
+      per_page: perPage,
+      page,
     });
 
     const data = response.data.map((issue) => ({
