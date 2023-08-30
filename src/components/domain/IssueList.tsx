@@ -6,13 +6,13 @@ import { IssueItem } from "components";
 import { Issue } from "api/type";
 import { Link } from "react-router-dom";
 
+const isFifth = (idx: number) => (idx + 1) % 5 === 0;
+
 const IssueList = () => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const observer = useRef<IntersectionObserver | null>(null);
-  const isFifth = (idx: number) => (idx + 1) % 5 === 0;
-
   const lastIssueElementRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (isFetching) return;
