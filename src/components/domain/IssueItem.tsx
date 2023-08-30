@@ -4,47 +4,32 @@ import { Issue } from "api/type";
 import { formatDateString } from "utils";
 interface IssueListProps {
   issue: Issue;
-  idx: number;
 }
-const IssueItem = ({ issue, idx }: IssueListProps) => {
+const IssueItem = ({ issue }: IssueListProps) => {
   const { number, comments, createdAt, title, author } = issue;
-
   const navigate = useNavigate();
-  const isFifthIdx = (idx + 1) % 5 === 0;
-
   const navigateToIssueDetail = () => {
     navigate(`/issues/${number}`);
   };
 
   return (
     <>
-      <StyledIssueItem onClick={navigateToIssueDetail}>
-        <div>
-          <p>{title}</p>
-          <span>#{number}</span>
-          <span>{formatDateString(createdAt)}</span>
-          <span>{author}</span>
-        </div>
-        <Comment>{comments}개</Comment>
-      </StyledIssueItem>
-      {isFifthIdx && (
-        <Add
-          aria-label="광고 바로가기"
-          to="https://www.wanted.co.kr/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
-            alt=""
-          />
-        </Add>
-      )}
+      <li>
+        <StyledIssueItem onClick={navigateToIssueDetail}>
+          <div>
+            <p>{title}</p>
+            <span>#{number}</span>
+            <span>{formatDateString(createdAt)}</span>
+            <span>{author}</span>
+          </div>
+          <Comment>{comments}개</Comment>
+        </StyledIssueItem>
+      </li>
     </>
   );
 };
 
-const StyledIssueItem = styled.li`
+const StyledIssueItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,17 +46,6 @@ const StyledIssueItem = styled.li`
       font-size: 0.8rem;
       margin-right: 0.8rem;
     }
-  }
-`;
-
-const Add = styled(Link)`
-  width: 100%;
-  height: 200px;
-  background-color: #e1e4e8;
-  overflow: hidden;
-  img {
-    width: 100%;
-    object-fit: cover;
   }
 `;
 
