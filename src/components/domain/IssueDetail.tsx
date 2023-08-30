@@ -124,6 +124,9 @@ const IssueDetailSub = styled.p`
 
 const IssueDetailBody = styled.div`
   padding: 1rem;
+  img {
+    width: 100%;
+  }
 `;
 
 const AlertMessage = styled.p`
