@@ -4,13 +4,12 @@ import { IssueItem } from "components";
 import { Issue } from "../../api/type";
 
 const IssueList = () => {
-  const [issues, setIssues] = useState<any>([]);
+  const [issues, setIssues] = useState<Issue[]>([]);
 
   useEffect(() => {
     const fetchIssues = async () => {
       const res = await getIssues();
       setIssues(res);
-      console.log(res);
     };
 
     fetchIssues();

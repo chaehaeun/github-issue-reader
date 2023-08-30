@@ -1,7 +1,12 @@
-import React from "react";
+const ORGNAME = "facebook";
+const REPONAME = "react";
 
 const Header = () => {
-  return <header>Organization Name / Repository Name</header>;
+  return (
+    <header>
+      {ORGNAME} / {REPONAME}
+    </header>
+  );
 };
 
 export default Header;

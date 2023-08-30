@@ -1,10 +1,14 @@
 import { Octokit } from "@octokit/rest";
+import { Issue } from "./type";
 
 const octokit = new Octokit({
   auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
 });
 
-export const getIssues = async (owner = "facebook", repo = "react") => {
+export const getIssues = async (
+  owner = "facebook",
+  repo = "react"
+): Promise<Issue[]> => {
   try {
     const response = await octokit.rest.issues.listForRepo({
       owner,
@@ -22,7 +26,6 @@ export const getIssues = async (owner = "facebook", repo = "react") => {
       createdAt: issue.created_at,
     }));
 
-    console.log(response.data);
     return data;
   } catch (error) {
     console.error(error);
