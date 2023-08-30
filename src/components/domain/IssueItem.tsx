@@ -29,6 +29,7 @@ const IssueItem = ({ issue, idx }: IssueListProps) => {
       </StyledIssueItem>
       {isFifthIdx && (
         <Add
+          aria-label="광고 바로가기"
           to="https://www.wanted.co.kr/"
           target="_blank"
           rel="noopener noreferrer"
