@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Issue } from "api/type";
+import { formatDateString } from "utils";
 interface IssueListProps {
   issue: Issue;
   idx: number;
 }
-
 const IssueItem = ({ issue, idx }: IssueListProps) => {
   const { number, comments, createdAt, title, author } = issue;
 
@@ -21,7 +21,7 @@ const IssueItem = ({ issue, idx }: IssueListProps) => {
         <div>
           <p>{title}</p>
           <span>#{number}</span>
-          <span>{createdAt}</span>
+          <span>{formatDateString(createdAt)}</span>
           <span>{author}</span>
         </div>
         <span>{comments}개</span>
