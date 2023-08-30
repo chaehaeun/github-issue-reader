@@ -32,7 +32,7 @@ const IssueDetailPage = () => {
 
   return (
     <main>
-      <h2>이슈 디테일 페이지</h2>
+      <h1>이슈 디테일 페이지</h1>
       {isLoading && <p>로딩 중...</p>}
       {!isLoading && !issue && <p>데이터가 없습니다.</p>}
       {!isLoading && issue && (

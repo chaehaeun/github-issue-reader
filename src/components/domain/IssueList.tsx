@@ -35,14 +35,15 @@ const IssueList = () => {
   }, [page]);
 
   return (
-    <>
+    <main>
+      <h1>이슈 리스트 페이지</h1>
       <ul>
         {issues.map((issue: Issue, idx: number) => (
           <IssueItem issue={issue} idx={idx} key={idx} />
         ))}
       </ul>
       <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
-    </>
+    </main>
   );
 };
 
