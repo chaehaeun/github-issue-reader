@@ -48,7 +48,18 @@ export const getIssueDetail = async (
       repo,
       issue_number: issueNumber,
     });
-    return response.data;
+
+    const data = {
+      number: response.data.number,
+      title: response.data.title,
+      authorName: response.data.user?.login,
+      authorAvatar: response.data.user?.avatar_url,
+      comments: response.data.comments,
+      createdAt: response.data.created_at,
+      body: response.data.body,
+    };
+
+    return data;
   } catch (error) {
     console.error(`#${issueNumber}:`, error);
     throw error;

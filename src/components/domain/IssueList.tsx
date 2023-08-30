@@ -38,7 +38,7 @@ const IssueList = () => {
     <>
       <ul>
         {issues.map((issue: Issue, idx: number) => (
-          <IssueItem issue={issue} idx={idx} key={issue.id} />
+          <IssueItem issue={issue} idx={idx} key={idx} />
         ))}
       </ul>
       <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
