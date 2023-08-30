@@ -62,3 +62,27 @@ https://github-issue-reader.vercel.app/
 │       └── index.ts
 ├── tsconfig.json
 ```
+
+## Preview
+
+<div style="text-align:center">
+
+![라이트하우스 점수](https://cdn.discordapp.com/attachments/619875492820025356/1146390569787076719/image.png)
+
+</div>
+
+### Issue List 페이지
+
+<div style="text-align:center">
+
+![이슈리스트페이지](https://cdn.discordapp.com/attachments/619875492820025356/1146398704060858378/chrome_00gKhOWg6N.gif)
+
+</div>
+
+### Issue Detail 페이지
+
+<div style="text-align:center">
+
+![이슈디테일페이지](https://cdn.discordapp.com/attachments/619875492820025356/1146398704727765002/chrome_X1psF43Vye.gif)
+
+</div>
