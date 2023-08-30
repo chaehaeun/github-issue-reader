@@ -6,7 +6,7 @@ import { IssueItem } from "components";
 import { Issue } from "api/type";
 import { Link } from "react-router-dom";
 
-const isFifth = (idx: number) => (idx + 1) % 5 === 0;
+const isFourth = (idx: number) => (idx + 1) % 4 === 0;
 
 const IssueList = () => {
   const [issues, setIssues] = useState<Issue[]>([]);
@@ -42,25 +42,26 @@ const IssueList = () => {
     <IssueListWrapper>
       <HiddenHeading>이슈 리스트 페이지</HiddenHeading>
       <ul>
-        {issues.map((issue: Issue, idx: number) =>
-          isFifth(idx) ? (
-            <li>
-              <Add
-                aria-label="광고 바로가기"
-                to="https://www.wanted.co.kr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
-                  alt="광고 이미지"
-                />
-              </Add>
-            </li>
-          ) : (
+        {issues.map((issue: Issue, idx: number) => (
+          <>
             <IssueItem issue={issue} key={issue.number} />
-          )
-        )}
+            {isFourth(idx) && (
+              <li>
+                <Add
+                  aria-label="광고 바로가기"
+                  to="https://www.wanted.co.kr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
+                    alt="광고 이미지"
+                  />
+                </Add>
+              </li>
+            )}
+          </>
+        ))}
       </ul>
       <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
     </IssueListWrapper>
