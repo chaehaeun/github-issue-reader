@@ -98,6 +98,7 @@ const IssueDetailHeader = styled.div`
 `;
 
 const AuthorAvatar = styled.div`
+  flex-shrink: 0;
   width: 80px;
   height: 80px;
   border-radius: 50%;
