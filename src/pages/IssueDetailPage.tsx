@@ -1,7 +1,7 @@
 import React from "react";
 
-const IssueDetail = () => {
+const IssueDetailPage = () => {
   return <div>issue detail</div>;
 };
 
-export default IssueDetail;
+export default IssueDetailPage;

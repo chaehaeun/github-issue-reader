@@ -1,32 +1,20 @@
-import { getIssues } from "api";
-import { useEffect, useState } from "react";
-
-interface IssueItemProps {}
-
-const IssueItem = ({}: IssueItemProps) => {
-  // const [issues, setIssues] = useState([]);
-  // useEffect(() => {
-  //   const fetchIssues = async () => {
-  //     try {
-  //       const res = await getIssues();
-  //       setIssues(res);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   fetchIssues();
-  // }, []);
+const IssueItem = ({ issue, idx }: any) => {
+  const { number, comments, createdAt, title, author } = issue;
+  const isFifthIdx = (idx + 1) % 5 === 0;
 
   return (
-    <li>
-      <div>
-        <p>Hooks + multiple instances of React </p>
-        <span>2132154</span>
-        <span>opened on DATE</span>
-        <span>author</span>
-      </div>
-      <span>comments</span>
-    </li>
+    <>
+      <li>
+        <div>
+          <p>{title}</p>
+          <span>#{number}</span>
+          <span>{createdAt}</span>
+          <span>{author}</span>
+        </div>
+        <span>{comments}개</span>
+      </li>
+      {isFifthIdx && <div>광고</div>}
+    </>
   );
 };
 

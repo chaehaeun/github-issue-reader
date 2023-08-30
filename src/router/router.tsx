@@ -1,6 +1,6 @@
 import App from "App";
 import { createBrowserRouter } from "react-router-dom";
-import { IssueList, IssueDetail, NotFound } from "pages";
+import { IssueListPage, IssueDetailPage, NotFound } from "pages";
 
 const router = createBrowserRouter([
   {
@@ -10,11 +10,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <IssueList />,
+        element: <IssueListPage />,
       },
       {
-        path: "issuedetail/:id",
-        element: <IssueDetail />,
+        path: "issues/:id",
+        element: <IssueDetailPage />,
       },
     ],
   },
