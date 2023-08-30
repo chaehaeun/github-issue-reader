@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Issue } from "api/type";
 import { formatDateString } from "utils";
 interface IssueListProps {
@@ -17,18 +18,48 @@ const IssueItem = ({ issue, idx }: IssueListProps) => {
 
   return (
     <>
-      <li onClick={navigateToIssueDetail}>
+      <StyledIssueItem onClick={navigateToIssueDetail}>
         <div>
           <p>{title}</p>
           <span>#{number}</span>
           <span>{formatDateString(createdAt)}</span>
           <span>{author}</span>
         </div>
-        <span>{comments}개</span>
-      </li>
-      {isFifthIdx && <div>광고</div>}
+        <Comment>{comments}개</Comment>
+      </StyledIssueItem>
+      {isFifthIdx && <Add to="https://www.wanted.co.kr/">광고</Add>}
     </>
   );
 };
+
+const StyledIssueItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e1e4e8;
+  cursor: pointer;
+  div {
+    p {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    span {
+      font-size: 0.8rem;
+      margin-right: 0.8rem;
+    }
+  }
+`;
+
+const Add = styled(Link)`
+  width: 100%;
+  height: 100px;
+  background-color: #e1e4e8;
+`;
+
+const Comment = styled.span`
+  flex-shrink: 0;
+`;
 
 export default IssueItem;

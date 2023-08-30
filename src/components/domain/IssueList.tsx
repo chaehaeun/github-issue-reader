@@ -1,4 +1,6 @@
 import { getIssues } from "api/octokitService";
+import styled from "styled-components";
+import { a11yHidden } from "globalStyles";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IssueItem } from "components";
 import { Issue } from "api/type";
@@ -35,16 +37,32 @@ const IssueList = () => {
   }, [page]);
 
   return (
-    <main>
-      <h1>이슈 리스트 페이지</h1>
+    <IssueListWrapper>
+      <HiddenHeading>이슈 리스트 페이지</HiddenHeading>
       <ul>
         {issues.map((issue: Issue, idx: number) => (
           <IssueItem issue={issue} idx={idx} key={idx} />
         ))}
       </ul>
       <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
-    </main>
+    </IssueListWrapper>
   );
 };
+
+const HiddenHeading = styled.h1`
+  ${a11yHidden}
+`;
+
+const IssueListWrapper = styled.main`
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  p {
+    margin: 0;
+  }
+`;
 
 export default IssueList;
