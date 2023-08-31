@@ -3,6 +3,7 @@ import { createGlobalStyle, css } from "styled-components";
 const GlobalStyles = createGlobalStyle`
     *{
         box-sizing: border-box;
+        font-family: "Pretendard Variable",'Noto Sans KR', sans-serif;
     }
     #root{
         width: 100%;
