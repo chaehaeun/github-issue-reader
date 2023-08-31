@@ -56,7 +56,7 @@ const IssueDetailPage = () => {
                 </IssueDetailSub>
               </div>
             </IssueDetailHeader>
-            <span>{issue.comments}개</span>
+            <Comment>{issue.comments}개</Comment>
           </IssueDetailHeaderWrap>
           {typeof issue.body === "string" && (
             <IssueDetailBody>
@@ -131,6 +131,10 @@ const IssueDetailBody = styled.div`
 const AlertMessage = styled.p`
   text-align: center;
   margin-top: 2rem;
+`;
+
+const Comment = styled.span`
+  flex-shrink: 0;
 `;
 
 export default IssueDetailPage;
