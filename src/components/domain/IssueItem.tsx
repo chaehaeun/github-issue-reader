@@ -13,7 +13,7 @@ const IssueItem = ({ issue }: IssueListProps) => {
   };
 
   return (
-    <li>
+    <li aria-label={`${number}번 이슈로 이동`}>
       <StyledIssueItem onClick={navigateToIssueDetail}>
         <div>
           <p>{title}</p>
