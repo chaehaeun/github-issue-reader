@@ -47,7 +47,7 @@ const IssueList = () => {
             <IssueItem issue={issue} key={issue.number} />
             {isFourth(idx) && (
               <li>
-                <Add
+                <Ad
                   aria-label="광고 바로가기"
                   to="https://www.wanted.co.kr/"
                   target="_blank"
@@ -57,7 +57,7 @@ const IssueList = () => {
                     src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
                     alt="광고 이미지"
                   />
-                </Add>
+                </Ad>
               </li>
             )}
           </>
@@ -84,7 +84,7 @@ const IssueListWrapper = styled.main`
     margin: 0;
   }
 `;
-const Add = styled(Link)`
+const Ad = styled(Link)`
   display: block;
   width: 100%;
   height: 200px;
