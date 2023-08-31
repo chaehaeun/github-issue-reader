@@ -37,6 +37,15 @@ export const getIssueDetail = async (issueNumber: number) => {
       issue_number: issueNumber,
     });
 
+    switch (true) {
+      case response.status !== 200:
+        throw new Error("해당 이슈를 불러올 수 없거나 잘못된 접근입니다.");
+      case !!response.data.pull_request:
+        throw new Error("해당 페이지는 이슈가 아닙니다.");
+      case response.data.state !== "open":
+        throw new Error("해당 이슈는 닫혀있습니다.");
+    }
+
     const data = {
       number: response.data.number,
       title: response.data.title,
@@ -48,8 +57,10 @@ export const getIssueDetail = async (issueNumber: number) => {
     };
 
     return data;
-  } catch (error) {
-    console.error(`#${issueNumber}:`, error);
+  } catch (error: any) {
+    if (error.status === 404) {
+      throw new Error("잘못된 접근입니다.");
+    }
     throw error;
   }
 };

@@ -11,6 +11,7 @@ import { a11yHidden } from "globalStyles";
 const IssueDetailPage = () => {
   const [issue, setIssue] = useState<IssueDetail | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,8 +23,8 @@ const IssueDetailPage = () => {
       try {
         const res = await getIssueDetail(+id);
         setIssue(res);
-      } catch (error) {
-        console.error(error);
+      } catch (error: any) {
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -36,7 +37,7 @@ const IssueDetailPage = () => {
     <IssueDetailWrapper>
       <HiddenHeading>이슈 디테일 페이지</HiddenHeading>
       {isLoading && <AlertMessage>로딩 중...</AlertMessage>}
-      {!isLoading && !issue && <AlertMessage>데이터가 없습니다.</AlertMessage>}
+      {!isLoading && !issue && <AlertMessage>{error}</AlertMessage>}
       {!isLoading && issue && (
         <>
           <IssueDetailHeaderWrap>
@@ -57,14 +58,12 @@ const IssueDetailPage = () => {
             </IssueDetailHeader>
             <span>{issue.comments}개</span>
           </IssueDetailHeaderWrap>
-          {typeof issue.body === "string" ? (
+          {typeof issue.body === "string" && (
             <IssueDetailBody>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {issue.body}
               </ReactMarkdown>
             </IssueDetailBody>
-          ) : (
-            "데이터가 존재하지 않습니다."
           )}
         </>
       )}
