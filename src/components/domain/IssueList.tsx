@@ -1,7 +1,7 @@
 import { getIssues } from "api/octokitService";
 import styled from "styled-components";
 import { a11yHidden } from "globalStyles";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { IssueItem } from "components";
 import { Issue } from "api/type";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const IssueList = () => {
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const observer = useRef<IntersectionObserver | null>(null);
+
   const lastIssueElementRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (isFetching) return;
@@ -30,7 +31,7 @@ const IssueList = () => {
   useEffect(() => {
     const fetchIssues = async () => {
       setIsFetching(true);
-      const res = await getIssues("facebook", "react", 20, page);
+      const res = await getIssues(20, page);
       setIssues((prevIssues) => [...prevIssues, ...res]);
       setIsFetching(false);
     };
@@ -43,8 +44,8 @@ const IssueList = () => {
       <HiddenHeading>이슈 리스트 페이지</HiddenHeading>
       <ul>
         {issues.map((issue: Issue, idx: number) => (
-          <>
-            <IssueItem issue={issue} key={issue.number} />
+          <Fragment key={`${issue.number}-${idx}`}>
+            <IssueItem issue={issue} />
             {isFourth(idx) && (
               <li>
                 <Ad
@@ -60,7 +61,7 @@ const IssueList = () => {
                 </Ad>
               </li>
             )}
-          </>
+          </Fragment>
         ))}
       </ul>
       <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
