@@ -71,10 +71,16 @@ https://github-issue-reader.vercel.app/
 
 </div>
 
-### Issue List 페이지
+| 이슈 목록                        | 이슈 상세                            |
+| -------------------------------- | ------------------------------------ |
+| ![메인페이지](./assets/main.gif) | ![디테일페이지](./assets/detail.gif) |
 
-![이슈리스트페이지](./assets/list_preview.gif)
+| 페이지 에러 핸들링                | 에러 페이지                       |
+| --------------------------------- | --------------------------------- |
+| ![무한스크롤](./assets/error.gif) | ![에러페이지](./assets/error.gif) |
 
-### Issue Detail 페이지
-
-![이슈디테일페이지](./assets/detail_preview.gif)
+- intersectionObserver를 이용한 무한 스크롤 구현
+- octokit을 이용한 깃헙 api 호출
+- react-router-dom을 이용한 라우팅
+- lazy, Suspense를 이용한 코드 스플리팅
+- 사용자의 url 수정에 따른 에러 핸들링
