@@ -9,7 +9,11 @@ import { Link } from "react-router-dom";
 const isFourth = (idx: number) => (idx + 1) % 4 === 0;
 
 const IssueList = () => {
-  const [issues, setIssues] = useState<Issue[]>([]);
+  const [data, setData] = useState<{ issues: Issue[]; hasNext: boolean }>({
+    issues: [],
+    hasNext: true,
+  });
+  const { issues, hasNext } = data;
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const observer = useRef<IntersectionObserver | null>(null);
@@ -30,14 +34,23 @@ const IssueList = () => {
 
   useEffect(() => {
     const fetchIssues = async () => {
+      if (!hasNext) return;
       setIsFetching(true);
-      const res = await getIssues(20, page);
-      setIssues((prevIssues) => [...prevIssues, ...res]);
-      setIsFetching(false);
+      try {
+        const res = await getIssues(20, page);
+        setData((prevData) => ({
+          issues: [...prevData.issues, ...res.issues],
+          hasNext: res.hasNext,
+        }));
+      } catch {
+        alert("데이터를 불러오는데 실패했습니다.");
+      } finally {
+        setIsFetching(false);
+      }
     };
 
     fetchIssues();
-  }, [page]);
+  }, [page, hasNext]);
 
   return (
     <IssueListWrapper>
