@@ -21,7 +21,7 @@ const IssueDetailPage = () => {
     const fetchIssueDetail = async () => {
       setIsLoading(true);
       try {
-        const res = await getIssueDetail(+id);
+        const res = await getIssueDetail(id);
         setIssue(res);
       } catch (error: any) {
         setError(error.message);
