@@ -1,5 +1,4 @@
 import { Octokit } from "@octokit/rest";
-import { Issue } from "./type";
 
 const REPO = "react";
 const OWNER = "facebook";
@@ -8,31 +7,26 @@ const octokit = new Octokit({
   auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
 });
 
-export const getIssues = async (perPage = 20, page = 1): Promise<Issue[]> => {
-  try {
-    const response = await octokit.rest.issues.listForRepo({
-      owner: OWNER,
-      repo: REPO,
-      state: "open",
-      sort: "comments",
-      per_page: perPage,
-      page,
-    });
+export const getIssues = async (perPage = 20, page = 1) => {
+  const response = await octokit.rest.issues.listForRepo({
+    owner: OWNER,
+    repo: REPO,
+    state: "open",
+    sort: "comments",
+    per_page: perPage,
+    page,
+  });
 
-    const data = response.data.map((issue) => ({
-      id: issue.id,
-      title: issue.title,
-      number: issue.number,
-      author: issue.user?.login,
-      comments: issue.comments,
-      createdAt: issue.created_at,
-    }));
+  const data = response.data.map((issue) => ({
+    id: issue.id,
+    title: issue.title,
+    number: issue.number,
+    author: issue.user?.login,
+    comments: issue.comments,
+    createdAt: issue.created_at,
+  }));
 
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return data;
 };
 
 export const getIssueDetail = async (issueNumber: number) => {
