@@ -9,7 +9,10 @@ import { Link } from "react-router-dom";
 const isFourth = (idx: number) => (idx + 1) % 4 === 0;
 
 const IssueList = () => {
-  const [data, setData] = useState<{ issues: Issue[]; hasNext: boolean }>({
+  const [data, setData] = useState<{
+    issues: Issue[];
+    hasNext: boolean;
+  }>({
     issues: [],
     hasNext: true,
   });
@@ -37,10 +40,12 @@ const IssueList = () => {
       if (!hasNext) return;
       setIsFetching(true);
       try {
-        const res = await getIssues(20, page);
+        const fetchedIssues = await getIssues(20, page);
+
+        const newHasNext = fetchedIssues.length === 20;
         setData((prevData) => ({
-          issues: [...prevData.issues, ...res.issues],
-          hasNext: res.hasNext,
+          issues: [...prevData.issues, ...fetchedIssues],
+          hasNext: newHasNext,
         }));
       } catch {
         alert("데이터를 불러오는데 실패했습니다.");
