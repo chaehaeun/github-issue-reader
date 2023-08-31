@@ -74,7 +74,7 @@ const IssueList = () => {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/portfolio-49c62.appspot.com/o/1500x500.jpg?alt=media&token=99487ca8-67ba-4a6b-af9c-d25b56fdaeb8"
+                    src="https://cdn.discordapp.com/attachments/619875492820025356/1146776906637770813/bannerImg_1.jpg"
                     alt="광고 이미지"
                   />
                 </Ad>
