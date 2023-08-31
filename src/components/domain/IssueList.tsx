@@ -5,6 +5,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { IssueItem } from "components";
 import { Issue } from "api/type";
 import { Link } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 const isFourth = (idx: number) => (idx + 1) % 4 === 0;
 
@@ -82,7 +83,14 @@ const IssueList = () => {
           </Fragment>
         ))}
       </ul>
-      <div ref={lastIssueElementRef}>{isFetching ? "로딩 중..." : ""}</div>
+      <div ref={lastIssueElementRef}>
+        {isFetching ? (
+          <Loading>
+            <ClipLoader color="#000" loading size={10} />
+            로딩 중...
+          </Loading>
+        ) : null}
+      </div>
     </IssueListWrapper>
   );
 };
@@ -114,6 +122,14 @@ const Ad = styled(Link)`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
 `;
 
 export default IssueList;
