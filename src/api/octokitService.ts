@@ -7,13 +7,13 @@ const octokit = new Octokit({
   auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
 });
 
-export const getIssues = async (perPage = 20, page = 1) => {
+export const getIssues = async (per_page = 20, page = 1) => {
   const response = await octokit.rest.issues.listForRepo({
     owner: OWNER,
     repo: REPO,
     state: "open",
     sort: "comments",
-    per_page: perPage,
+    per_page,
     page,
   });
 
@@ -31,9 +31,6 @@ export const getIssues = async (perPage = 20, page = 1) => {
 
 export const getIssueDetail = async (issueNumber: string) => {
   const issue_number = Number(issueNumber);
-
-  console.log(issue_number, typeof issue_number);
-
   if (isNaN(issue_number)) {
     throw new Error("잘못된 접근입니다.");
   }
