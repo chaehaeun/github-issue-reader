@@ -167,3 +167,9 @@ export const getIssueDetail = async (issueNumber: string) => {
 #### react-router-dom을 이용한 라우팅
 
 #### lazy, Suspense를 이용한 코드 스플리팅
+
+#### 시멘틱 태그를 사용한 시멘틱 마크업
+
+![Alt text](./assets/markup.png)
+
+- 웹 표준을 준수하기 위해 광고 배너를 li에 감싸 주었습니다.
