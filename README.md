@@ -173,3 +173,9 @@ export const getIssueDetail = async (issueNumber: string) => {
 ![Alt text](./assets/markup.png)
 
 - 웹 표준을 준수하기 위해 광고 배너를 li에 감싸 주었습니다.
+
+## 👀 추후 업데이트할 기능
+
+- facebook에만 한정된 것이 아닌 다른 레포지토리의 이슈 목록도 볼 수 있도록 검색 기능 추가
+- 이슈 목록을 불러올 때 필터링 기능 추가
+- 이슈 상세 페이지에서 댓글 조회 기능 추가
